@@ -1,0 +1,22 @@
+services:
+    ollama:
+        image: ollama/ollama:0.5.7
+        ports:
+            - "11434:11434"
+        volumes:
+            - "${OLLAMA_MODELS_VOLUME:-models}:/root/.ollama"
+
+    chromadb:
+        image: chromadb/chroma:0.6.1
+        volumes:
+          - chromadb_data:/chroma/chroma
+        ports:
+          - "${CHROMADB_PORT:-8000}:8000"
+        environment:
+          - IS_PERSISTENT=TRUE
+          - PERSIST_DIRECTORY=/chroma/chroma
+          - ANONYMIZED_TELEMETRY=FALSE
+
+volumes:
+    chromadb_data:
+        driver: local
