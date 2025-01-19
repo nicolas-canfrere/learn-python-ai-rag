@@ -28,3 +28,6 @@ install:
 
 embeddings:
 	.venv/bin/python document_database/main.py
+
+start-app:
+	.venv/bin/python api/main.py

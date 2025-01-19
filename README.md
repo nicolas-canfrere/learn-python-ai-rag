@@ -40,9 +40,27 @@ curl -X POST http://localhost:11434/api/chat -d '{"model":"llama3.2:3b-instruct-
 ```
 
 
-### create embeddings
+## create embeddings
 
 ```bash
 ## it takes a while !!
 make embeddings
 ``` 
+
+## Send a question
+
+```bash
+make start-app
+```
+
+
+```bash
+curl -X 'POST' \
+  'http://127.0.0.1:18080/question' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{"question": "Why the sky is blue?"}'
+```
+
+Or open your browser and go to [http://127.0.0.1:18080/docs](http://127.0.0.1:18080/docs)
+and try the POST /question endpoint
